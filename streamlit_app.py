@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pickle as pkl
 import streamlit as st
-from tensorflow.keras import load_model
+from tensorflow.keras.models import load_model
 
 model = load_model("model.h5")
 with open("label_encoder_gender.pkl", "rb") as file:

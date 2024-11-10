@@ -34,24 +34,45 @@ input_df = pd.DataFrame({
     "Balance": [balance],
     "EstimatedSalary": [estimated_salary],
     "NumOfProducts": [num_of_products],
-    "HasCrCard": [0 if has_cr_card=="No" else 1],
-    "IsActiveMember": [0 if is_active=="No" else 1],
+    "HasCrCard": [0 if has_cr_card == "No" else 1],
+    "IsActiveMember": [0 if is_active == "No" else 1],
     "Tenure": [tenure],
 })
 
 geo_encoded = onehot_encoder.transform([[geography]]).toarray()
-geo_encoded_df = pd.DataFrame(geo_encoded, columns= onehot_encoder.get_feature_names_out(["Geography"]))
-input_df['Gender']=label_encoder.transform(input_df['Gender'])
-input_data = pd.concat([input_df.reset_index(drop=True), geo_encoded_df],axis=1)
-input_data = input_data[["CreditScore","Gender","Age","Tenure","Balance","NumOfProducts","HasCrCard","IsActiveMember","EstimatedSalary","Geography_France","Geography_Germany","Geography_Spain"]]
+geo_encoded_df = pd.DataFrame(geo_encoded, columns=onehot_encoder.get_feature_names_out(["Geography"]))
+input_df['Gender'] = label_encoder.transform(input_df['Gender'])
+input_data = pd.concat([input_df.reset_index(drop=True), geo_encoded_df], axis=1)
+input_data = input_data[
+    ["CreditScore", "Gender", "Age", "Tenure", "Balance", "NumOfProducts", "HasCrCard", "IsActiveMember",
+     "EstimatedSalary", "Geography_France", "Geography_Germany", "Geography_Spain"]]
 print(input_data.columns)
 scaled_data = scaler.transform(input_data)
 
-
 prediction = model.predict(scaled_data)
 prediction_proba = prediction[0][0]
-st.write(f"Churn Probability: {round(prediction_proba,1)*100}%")
+st.write(f"Churn Probability: {round(prediction_proba, 1) * 100}%")
+
+st.markdown(
+    """
+    <style>
+    .box {
+        padding: 1em;
+        margin: 1em 0;
+        background-color: #f0f2f6;
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Display text inside the box
+
 if prediction_proba > 0.5:
-    st.write("Client is likely to churn 😢")
+    st.write("")
+    st.markdown('<div class="box">Client is likely to churn 😢</div>', unsafe_allow_html=True)
 else:
+    st.markdown('<div class="box">Client is not likely to churn 😌</div>', unsafe_allow_html=True)
     st.write("Client is not likely to churn 😌")

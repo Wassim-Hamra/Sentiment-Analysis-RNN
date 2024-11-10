@@ -50,7 +50,7 @@ scaled_data = scaler.transform(input_data)
 
 prediction = model.predict(scaled_data)
 prediction_proba = prediction[0][0]
-background-color = "background-color: #d1e7dd;" if prediction_proba > 0.5 else "background-color: #f8d7da;"
+background_color = "background-color: #d1e7dd;" if prediction_proba > 0.5 else "background-color: #f8d7da;"
 
 st.markdown(
     """
@@ -58,7 +58,7 @@ st.markdown(
     .box {
         padding: 1em;
         margin: 1em 0;
-        {background-color};
+        {background_color};
         border-radius: 5px;
         border: 1px solid #d3d3d3;
     }

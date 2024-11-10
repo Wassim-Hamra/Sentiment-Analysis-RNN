@@ -41,9 +41,9 @@ input_data = pd.DataFrame({
 
 geo_encoded = onehot_encoder.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geo_encoded, columns= onehot_encoder.get_feature_names_out(["Geography"]))
-# input_df=pd.DataFrame([input_data])
-# input_data['Gender']=label_encoder.transform(input_data['Gender'])
-# input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df],axis=1)
+input_df=pd.DataFrame([input_data])
+input_data['Gender']=label_encoder.transform(input_data['Gender'])
+input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df],axis=1)
 scaled_data = scaler.transform(input_data)
 
 prediction = model.predict(scaled_data)

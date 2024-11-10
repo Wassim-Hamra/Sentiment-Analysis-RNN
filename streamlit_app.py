@@ -46,7 +46,6 @@ input_data = pd.concat([input_df.reset_index(drop=True), geo_encoded_df], axis=1
 input_data = input_data[
     ["CreditScore", "Gender", "Age", "Tenure", "Balance", "NumOfProducts", "HasCrCard", "IsActiveMember",
      "EstimatedSalary", "Geography_France", "Geography_Germany", "Geography_Spain"]]
-print(input_data.columns)
 scaled_data = scaler.transform(input_data)
 
 prediction = model.predict(scaled_data)
@@ -71,8 +70,6 @@ st.markdown(
 # Display text inside the box
 
 if prediction_proba > 0.5:
-    st.write("")
     st.markdown('<div class="box">Client is likely to churn 😢</div>', unsafe_allow_html=True)
 else:
     st.markdown('<div class="box">Client is not likely to churn 😌</div>', unsafe_allow_html=True)
-    st.write("Client is not likely to churn 😌")

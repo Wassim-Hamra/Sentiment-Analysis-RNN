@@ -42,9 +42,9 @@ input_data = pd.DataFrame({
 geo_encoded = onehot_encoder.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geo_encoded, columns= onehot_encoder.get_feature_names_out(["Geography"]))
 input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df],axis=1)
-input_data = scaler.transform(input_data)
+scaled_data = scaler.transform(input_data)
 
-prediction = model.predict(input_data)
+prediction = model.predict(scaled_data)
 prediction_proba = prediction[0][0]
 st.write(f"Churn Probability: {prediction_proba*100}%")
 if prediction_proba > 0.5:

@@ -51,8 +51,6 @@ scaled_data = scaler.transform(input_data)
 prediction = model.predict(scaled_data)
 prediction_proba = prediction[0][0]
 background_color = "background-color:rgba(250, 87, 87, 0.3);" if prediction_proba > 0.5 else "background-color:rgba(79, 227, 94, 0.3);"
-print(prediction_proba)
-print(background_color)
 st.markdown(
     f"""
     <style>

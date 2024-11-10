@@ -1,4 +1,4 @@
-# Sentiment-Analysis-RNN
-Repo for a MINI project about IMDB sentiment analysis using RNN
+# Churn-Classification-ANN
+_Repo for a churn classification MINI project using ANN_
 ------------------------------------------------------
-**Check it out** 👀: <link>
+**Check it out** 👀: https://churn-classification-wassim-hamra.streamlit.app/

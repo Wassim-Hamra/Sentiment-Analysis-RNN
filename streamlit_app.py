@@ -25,7 +25,7 @@ particles_js_code = """
         height: 100%;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: -1;  /* Ensure particles are behind other elements */
     }
 </style>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -142,7 +142,9 @@ particles_js_code = """
     });
 </script>
 """
-components.html(particles_js_code, height=600, width=800)
+
+# Display particles.js background
+components.html(particles_js_code, height=0, width=0)
 
 # User Input
 geography = st.selectbox("Geography", onehot_encoder.categories_[0])

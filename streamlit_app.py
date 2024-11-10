@@ -50,7 +50,7 @@ scaled_data = scaler.transform(input_data)
 
 prediction = model.predict(scaled_data)
 prediction_proba = prediction[0][0]
-st.write(f"Churn Probability: {round(prediction_proba, 1) * 100}%")
+background-color = "background-color: #d1e7dd;" if prediction_proba > 0.5 else "background-color: #f8d7da;"
 
 st.markdown(
     """
@@ -58,7 +58,7 @@ st.markdown(
     .box {
         padding: 1em;
         margin: 1em 0;
-        background-color: #f0f2f6;
+        {background-color};
         border-radius: 5px;
         border: 1px solid #d3d3d3;
     }
@@ -73,3 +73,5 @@ if prediction_proba > 0.5:
     st.markdown('<div class="box">Client is likely to churn 😢</div>', unsafe_allow_html=True)
 else:
     st.markdown('<div class="box">Client is not likely to churn 😌</div>', unsafe_allow_html=True)
+
+st.write(f"Churn Probability: {round(prediction_proba, 1) * 100}%")

@@ -58,7 +58,7 @@ st.markdown(
     .box {
         padding: 1em;
         margin: 1em 0;
-        {background_color};
+        background-color:red;
         border-radius: 5px;
         border: 1px solid #d3d3d3;
     }
@@ -70,8 +70,8 @@ st.markdown(
 # Display text inside the box
 
 if prediction_proba > 0.5:
-    st.markdown('<div class="box"><h2>Client is likely to churn 😢</h2></div>', unsafe_allow_html=True)
+    st.markdown('<div class="box"><h3>Client is likely to churn 😢</h3></div>', unsafe_allow_html=True)
 else:
-    st.markdown('<div class="box"><h2>Client is not likely to churn 😌</h2></div>', unsafe_allow_html=True)
+    st.markdown('<div class="box"><h3>Client is not likely to churn 😌</h3></div>', unsafe_allow_html=True)
 
 st.write(f"Churn Probability: {round(prediction_proba * 100,1)}%")

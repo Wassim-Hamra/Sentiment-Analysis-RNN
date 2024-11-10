@@ -144,7 +144,7 @@ particles_js_code = """
 """
 
 # Display particles.js background
-components.html(particles_js_code, height=100, width=100)
+components.html(particles_js_code, height=500, width=500)
 
 # User Input
 geography = st.selectbox("Geography", onehot_encoder.categories_[0])

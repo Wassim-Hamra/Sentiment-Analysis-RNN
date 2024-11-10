@@ -24,8 +24,8 @@ credit_score = st.number_input("Credit Score")
 estimated_salary = st.number_input("Salary")
 tenure = st.slider("Tenure", 0, 10)
 num_of_products = st.slider("Num Of Products", 1, 4)
-has_cr_card = st.selectbox("Has Credit Card", [0, 1])
-is_active = st.selectbox("Is Active Member", [0, 1])
+has_cr_card = st.selectbox("Has Credit Card", ["No", "Yes"])
+is_active = st.selectbox("Is Active Member", ["No", "Yes"])
 
 input_data = pd.DataFrame({
     "CreditScore": [credit_score],
@@ -34,8 +34,8 @@ input_data = pd.DataFrame({
     "Balance": [balance],
     "EstimatedSalary": [estimated_salary],
     "NumOfProducts": [num_of_products],
-    "HasCrCard": [has_cr_card],
-    "IsActiveMember": [is_active],
+    "HasCrCard": [0 if has_cr_card=="No" else 1],
+    "IsActiveMember": [0 if is_active=="No" else 1],
     "Tenure": [tenure],
 })
 

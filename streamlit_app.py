@@ -53,15 +53,15 @@ prediction_proba = prediction[0][0]
 background_color = "background-color: #cdf5a2;" if prediction_proba > 0.5 else "background-color: #f5a9a2;"
 
 st.markdown(
-    """
+    f"""
     <style>
-    .box {
+    .box {{
         padding: 1em;
         margin: 1em 0;
-        background-color:red;
+        {background_color}
         border-radius: 5px;
         border: 1px solid #d3d3d3;
-    }
+    }}
     </style>
     """,
     unsafe_allow_html=True

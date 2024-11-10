@@ -27,7 +27,7 @@ num_of_products = st.slider("Num Of Products", 1, 4)
 has_cr_card = st.selectbox("Has Credit Card", ["No", "Yes"])
 is_active = st.selectbox("Is Active Member", ["No", "Yes"])
 
-input_data = pd.DataFrame({
+input_df = pd.DataFrame({
     "CreditScore": [credit_score],
     "Gender": [gender],
     "Age": [age],
@@ -41,7 +41,6 @@ input_data = pd.DataFrame({
 
 geo_encoded = onehot_encoder.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geo_encoded, columns= onehot_encoder.get_feature_names_out(["Geography"]))
-input_df=pd.DataFrame([input_data])
 input_df['Gender']=label_encoder.transform(input_df['Gender'])
 input_data = pd.concat([input_df.reset_index(drop=True), geo_encoded_df],axis=1)
 scaled_data = scaler.transform(input_data)

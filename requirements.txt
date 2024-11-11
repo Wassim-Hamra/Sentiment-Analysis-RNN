@@ -1,4 +1,4 @@
-tensorflow==2.18.0 ##req
+tensorflow==2.15.0 ##req
 pandas
 numpy
 scikit-learn

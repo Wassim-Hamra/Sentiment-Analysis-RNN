@@ -41,10 +41,10 @@ if st.button('Classify'):
     st.write(f'Sentiment: {sentiment}')
     if sentiment == 'Negative ❌':
         st.write(f'Prediction Score: {round(100 - prediction[0][0] * 100, 1)}%')
-        st.write('⚠️ Note: This model has been developed for learning purposes and may not always provide accurate results. It is primarily trained on lengthy reviews, which might affect its performance when analyzing shorter ones.')
+        st.write('⚠️ Note: This model is made for learning and may not always provide accurate results.')
 
     else:
         st.write(f'Prediction Score: {round(prediction[0][0] * 100, 1)}%')
-        st.write('⚠️ Note: This model is made for learning and may not always provide accurate results. It is primarily trained on long reviews, which might affect its performance when analyzing shorter ones.')
+        st.write('⚠️ Note: This model is made for learning and may not always provide accurate results.')
 else:
     st.write('Please enter a movie review.')
